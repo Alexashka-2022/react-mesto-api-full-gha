@@ -5,12 +5,12 @@
   
 Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
 
-Адрес репозитория: https://github.com/...
+Адрес репозитория: https://github.com/Alexashka-2022/react-mesto-api-full-gha.git
 
 ## Ссылки на проект
 
-IP-адрес x.x.x.x
+IP-адрес 158.160.73.40
 
-Frontend https://...
+Frontend avibus-bonis.nomoreparties.sbs
 
-Backend https://...
+Backend api.nomoreparties.sbs

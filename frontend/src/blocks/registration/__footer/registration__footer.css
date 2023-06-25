@@ -1,0 +1,23 @@
+.registration__footer {
+    width: 358px;
+    align-self: center;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #FFFFFF;
+    text-decoration: none;
+    margin-top: 15px;
+}
+
+.registration__footer:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+@media screen and (max-width:400px) {
+    .registration__footer {
+        width: 260px;
+        margin-top: 20px;
+    }
+}

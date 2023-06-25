@@ -1,0 +1,30 @@
+.popup__error {
+    display: inline-block;
+    align-items: start;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #FF0000;
+    width: 358px;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.popup__error:last-of-type {
+    margin-bottom: 48px;
+}
+
+.popup__error:first-of-type {
+    margin-bottom: 30px;
+}
+
+@media screen and (max-width: 600px) {
+    .popup__error {
+        width: 238px;
+    }
+
+    .popup__error:last-of-type {
+        margin-bottom: 32px;
+    }
+}

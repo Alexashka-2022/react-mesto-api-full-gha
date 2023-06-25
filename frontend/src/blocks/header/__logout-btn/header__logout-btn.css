@@ -1,0 +1,11 @@
+.header__logout-btn {
+    font-weight: 400;
+    text-align: right;
+    color: #A9A9A9;
+    text-decoration: none;
+}
+
+.header__logout-btn:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}

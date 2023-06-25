@@ -1,0 +1,16 @@
+.header__menu-exit {
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url("../../../images/header-close-icon.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: opacity 0.6s linear;
+}
+
+.header__menu-exit:hover {
+    opacity: 0.6;
+}
