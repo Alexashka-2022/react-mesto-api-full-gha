@@ -11,6 +11,6 @@
 
 IP-адрес 158.160.73.40
 
-Frontend avibus-bonis.nomoreparties.sbs
+Frontend https://avibus-bonis.nomoreparties.sbs
 
-Backend api.nomoreparties.sbs
+Backend https://api.nomoreparties.sbs
