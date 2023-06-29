@@ -3,7 +3,6 @@ const http2 = require('node:http2');
 const BadRequestError = require('../errors/BadRequestError');
 const NotFoundError = require('../errors/NotFoundError');
 
-const JWT_SECRET = 'secret-key';
 const regexLink = /^(http|https):\/\/(www\.)?(?:[a-z0-9]+[a-z0-9-]*\.)+[a-z]{2,}?(?:\/\S*)?#?$/;
 
 const {
@@ -12,11 +11,12 @@ const {
   HTTP_STATUS_NOT_FOUND,
 } = http2.constants;
 
-const allowedCors = ['http://avibus-bonis.nomoreparties.sbs',
-  'https://avibus-bonis.nomoreparties.sbs',
-  'http://api.nomoreparties.sbs',
-  'https://api.nomoreparties.sbs',
-  'localhost:3000'];
+const allowedCors = ['http://shmakov.students.nomoreparties.sbs',
+  'https://shmakov.students.nomoreparties.sbs',
+  'http://api.shmakov.students.nomoreparties.sbs',
+  'https://api.shmakov.students.nomoreparties.sbs',
+  'http://localhost:3000',
+  'http://localhost:3001'];
 
 const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 
@@ -37,7 +37,6 @@ module.exports = {
   HTTP_STATUS_CREATED,
   HTTP_STATUS_NOT_FOUND,
   handleError,
-  JWT_SECRET,
   regexLink,
   allowedCors,
   DEFAULT_ALLOWED_METHODS,

@@ -4,6 +4,10 @@ import PopupWithForm from "./PopupWithForm.js";
 function EditAvatarPopup(props) {
   const inputRef = React.useRef();
 
+  React.useEffect(() => {
+    inputRef.current.value = "";
+  }, [props.isOpen])
+
   function handleSubmit(evt) {
     evt.preventDefault();
 
@@ -25,11 +29,11 @@ function EditAvatarPopup(props) {
       onSubmit={handleSubmit}
     >
       <input className="popup__input popup__input_avatar"
-       type="url"
-       id="avatar-link"
-       name="avatar-link"
-       placeholder="Ссылка на фото"
-       ref={inputRef} required />
+        type="url"
+        id="avatar-link"
+        name="avatar-link"
+        placeholder="Ссылка на фото"
+        ref={inputRef} required />
       <span className="popup__error" id="avatar-link-error"></span>
     </PopupWithForm>
   );

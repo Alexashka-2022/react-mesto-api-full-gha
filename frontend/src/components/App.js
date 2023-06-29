@@ -47,7 +47,7 @@ function App() {
   /*Стейт вывода текста кнопок*/
   const [isShowStatus, setShowStatus] = React.useState(false);
 
-  /*Получаем информацию о текущем пользавателе*/
+  /*Получаем информацию о текущем пользователе*/
   React.useEffect(() => {
     if (loggedIn) {
       api.getUserInfo().then((userInfo) => {
@@ -62,7 +62,7 @@ function App() {
   React.useEffect(() => {
     if (loggedIn) {
       api.getInitialCards().then((cardData) => {
-        setCards(cardData);
+        setCards(cardData.reverse());
       }).catch((err) => {
         console.log(err);
       })
@@ -76,7 +76,9 @@ function App() {
       auth.getToken(jwt).then((res) => {
         if (res) {
           setLoggedIn(true);
-          setHeaderEmail(res.data.email);
+          setHeaderEmail(res.email);
+          setCurrentUser(res);
+          api.setToken(jwt);
           navigate("/");
         }
       }).catch((err) => {
@@ -84,6 +86,7 @@ function App() {
       })
     }
   }, [navigate]);
+
 
   function handleEditAvatarClick() {
     setEditAvatarOpen(true);
@@ -119,8 +122,7 @@ function App() {
 
   /*Обработка лайков карточек*/
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
-
+    const isLiked = card.likes.some((item) => item === currentUser._id);
     if (isLiked) {
       api.deleteLike(card._id)
         .then((res) => {
@@ -171,7 +173,7 @@ function App() {
     setShowStatus(true);
     api.editUserAvatar(userInfo["avatar"])
       .then((res) => {
-        setCurrentUser(res)
+        setCurrentUser(res);
         closeAllPopups();
       })
       .catch((err) => {
@@ -218,6 +220,8 @@ function App() {
           localStorage.setItem("jwt", res.token);
           setLoggedIn(true);
           setHeaderEmail(userData.email);
+          setCurrentUser(userData);
+          api.setToken(res.token);
           navigate("/");
         }
       }).catch((err) => {

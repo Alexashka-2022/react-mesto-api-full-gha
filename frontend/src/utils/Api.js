@@ -16,6 +16,10 @@ class Api {
             .then(this._checkStatus);
     }
 
+    setToken(token) {
+        this._headers.authorization = `Bearer ${token}`;
+    }
+
     getInitialCards() {
         return this._request(`${this._baseUrl}/cards`,
             {
@@ -89,10 +93,10 @@ class Api {
 
 const api = new Api(
     {
-        baseUrl: "https://api.nomoreparties.sbs",
+        baseUrl: "https://api.shmakov.students.nomoreparties.sbs",
         headers: {
             "content-type": "application/json",
-            authorization: "a7b09761-28da-4b57-871e-f84fdfb6fd09",
+            "authorization": ""
         },
     });
 

@@ -9,8 +9,8 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.73.40
+IP 51.250.107.149
 
-Frontend https://avibus-bonis.nomoreparties.sbs
+Frontend https://shmakov.students.nomoreparties.sbs
 
-Backend https://api.nomoreparties.sbs
+Backend https://api.shmakov.students.nomoreparties.sbs
