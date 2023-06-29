@@ -49,7 +49,7 @@ const updateUserValidation = celebrate({
 /* валидация при изменении аватара */
 const updateAvatarValidation = celebrate({
   body: Joi.object().keys({
-    avatar: Joi.string().pattern(regexLink),
+    avatar: Joi.string().required().pattern(regexLink),
   }),
 });
 

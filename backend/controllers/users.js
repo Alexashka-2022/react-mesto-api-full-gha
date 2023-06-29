@@ -23,12 +23,12 @@ const getUsers = (req, res, next) => {
 
 /* получение пользователя по Id */
 const getUserById = (req, res, next) => {
-  userModel.findById(req.params.userId).orFail()
+  userModel.findById(req.params.userId)
     .then((user) => {
       if (!user) {
-        next(new NotFoundError('Пользователь по указанному _id не найден'));
+        return next(new NotFoundError('Пользователь по указанному _id не найден'));
       } else {
-        res.status(HTTP_STATUS_OK).send(user);
+        return res.status(HTTP_STATUS_OK).send(user);
       }
     }).catch((err) => {
       handleError(err, next);
@@ -40,9 +40,9 @@ const getCurrentUser = (req, res, next) => {
   userModel.findById(req.user._id)
     .then((user) => {
       if (!user) {
-        next(new NotFoundError('Пользователь по указанному _id не найден'));
+        return next(new NotFoundError('Пользователь по указанному _id не найден'));
       } else {
-        res.status(HTTP_STATUS_OK).send(user);
+        return res.status(HTTP_STATUS_OK).send(user);
       }
     }).catch((err) => {
       handleError(err, next);
@@ -68,9 +68,11 @@ const createUser = (req, res, next) => {
           });
         }).catch((err) => {
           if (err.code === 11000) {
-            next(new ConflictError('Пользователь с таким email уже существует!'));
+            return next(new ConflictError('Пользователь с таким email уже существует!'));
+          } else {
+            handleError(err, next);
           }
-          handleError(err, next);
+
         });
     }).catch(next);
 };

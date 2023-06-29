@@ -30,7 +30,6 @@ const deleteCard = (req, res, next) => {
   const userId = req.user._id;
 
   cardModel.findById(req.params.cardId)
-    .orFail()
     .then((card) => {
       if (!card) {
         return next(new NotFoundError('Передан несуществующий _id карточки'));
