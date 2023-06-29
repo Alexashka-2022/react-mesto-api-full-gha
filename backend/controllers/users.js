@@ -2,7 +2,6 @@ require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const NotFoundError = require('../errors/NotFoundError');
-const ConflictError = require('../errors/ConflictError');
 
 const userModel = require('../models/user');
 const {
@@ -27,9 +26,8 @@ const getUserById = (req, res, next) => {
     .then((user) => {
       if (!user) {
         return next(new NotFoundError('Пользователь по указанному _id не найден'));
-      } else {
-        res.status(HTTP_STATUS_OK).send(user);
       }
+      return res.status(HTTP_STATUS_OK).send(user);
     }).catch((err) => {
       handleError(err, next);
     });
@@ -41,9 +39,9 @@ const getCurrentUser = (req, res, next) => {
     .then((user) => {
       if (!user) {
         return next(new NotFoundError('Пользователь по указанному _id не найден'));
-      } else {
-        res.status(HTTP_STATUS_OK).send(user);
       }
+
+      return res.status(HTTP_STATUS_OK).send(user);
     }).catch((err) => {
       handleError(err, next);
     });
@@ -67,9 +65,6 @@ const createUser = (req, res, next) => {
             email: user.email,
           });
         }).catch((err) => {
-          if (err.code === 11000) {
-            return next(new ConflictError('Пользователь с таким email уже существует!'));
-          }
           handleError(err, next);
         });
     }).catch(next);

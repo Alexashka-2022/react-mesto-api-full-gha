@@ -2,6 +2,7 @@ const { default: mongoose } = require('mongoose');
 const http2 = require('node:http2');
 const BadRequestError = require('../errors/BadRequestError');
 const NotFoundError = require('../errors/NotFoundError');
+const ConflictError = require('../errors/ConflictError');
 
 const regexLink = /^(http|https):\/\/(www\.)?(?:[a-z0-9]+[a-z0-9-]*\.)+[a-z]{2,}?(?:\/\S*)?#?$/;
 
@@ -27,6 +28,10 @@ const handleError = (err, next) => {
 
   if (err instanceof mongoose.Error.DocumentNotFoundError) {
     return next(new NotFoundError('Элемент с таким _id не был найден'));
+  }
+
+  if (err.code === 11000) {
+    return next(new ConflictError('Пользователь с таким email уже существует!'));
   }
 
   return next(err);
