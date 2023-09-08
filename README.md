@@ -9,8 +9,8 @@
 
 ## Ссылки на проект
 
-IP 51.250.107.149
-
 Frontend https://shmakov.students.nomoreparties.sbs
 
 Backend https://api.shmakov.students.nomoreparties.sbs
+
+**Статус проекта:** проект завершен
